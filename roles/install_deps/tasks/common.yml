@@ -1,0 +1,9 @@
+---
+- name: <r_install_deps_t_common>
+  yum:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+    disable_gpg_check: yes
+    #allow_downgrade: yes
+  loop: "{{ deps }}"

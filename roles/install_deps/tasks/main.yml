@@ -1,2 +1,6 @@
 ---
 # tasks file for install_deps
+
+- import_tasks: common.yml
+  tags:
+    - r_install_deps_t_common

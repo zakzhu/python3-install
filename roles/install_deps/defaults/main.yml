@@ -1,2 +1,16 @@
 ---
 # defaults file for install_deps
+
+# FROM TASK:
+deps:
+  - "@Development tools"
+  - bzip2-devel
+  - ncurses-devel
+  - gdbm-devel
+  - sqlite-devel
+  - xz-devel
+  - openssl-devel
+  - libuuid-devel
+  - readline-devel
+  - zlib-devel
+  - libffi-devel
