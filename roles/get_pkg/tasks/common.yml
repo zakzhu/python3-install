@@ -26,7 +26,7 @@
 
 - name: "<r_get_pkg_t_common> extract /tmp/{{ package_tarball }} into /usr/local/src/"
   unarchive:
-    src: "{{ package_tarball }}"
+    src: "/tmp/{{ package_tarball }}"
     dest: /usr/local/src/
     #owner:
     #group:
