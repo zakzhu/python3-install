@@ -1,12 +1,12 @@
 ---
-- name: <r_get_pkg_t_copy_local> copy a file to /tmp/
+- name: "<r_get_pkg_t_copy_local> copy a {{ package_tarball }} to /tmp/"
   copy:
     # if path ends with "/", only inside contents of that
     # directory are copied to destination.
     # if it does not end with "/", the directory itself
     # with all contents is copied.
-    src:
-    dest: /tmp
+    src: "{{ package_tarball }}"
+    dest: /tmp/
     #owner:
     #group:
     #mode:

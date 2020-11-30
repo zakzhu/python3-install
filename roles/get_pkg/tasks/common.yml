@@ -1,12 +1,12 @@
 ---
-- name: <r_get_pkg_t_common>
+- name: "<r_get_pkg_t_common> calculate checksum of {{ package_tarball }}"
   command:
   #become: yes
   #become_method: su
   #become_user:
   #become_flags: "-s /bin/sh"
   args:
-    cmd: openssl dgst -{{ algo }} {{}}
+    cmd: "openssl dgst -{{ dgst_algo }} /tmp/{{ package_tarball }}"
     #chdir:
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *won't* be run.
@@ -15,16 +15,18 @@
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
     #remove:
-  register: dgst_result
+  register: checksum_result
 
 - name:
   fail:
     msg: "Failed as requested from task" # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
-  when:
+  when: cheksum != package_checksum
+  vars:
+    checksum: "{{ checksum_result['stdout'].split('= ')[1] }}"
 
-- name: <r_get_pkg_t_common> extract SRC into /usr/local/src/
+- name: "<r_get_pkg_t_common> extract /tmp/{{ package_tarball }} into /usr/local/src/"
   unarchive:
-    src:
+    src: "{{ package_tarball }}"
     dest: /usr/local/src/
     #owner:
     #group:
