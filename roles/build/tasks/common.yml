@@ -22,7 +22,7 @@
     # when filename already exists, this step *will* be run.
     #remove:
 
-- name: <r_build_t_common>
+- name: <r_build_t_common> clean the compilation environment
   shell:
   #become: yes
   #become_method: su
