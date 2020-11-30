@@ -7,7 +7,7 @@
     group: root
     mode: "0755"
 
-- name: <r_build_t_common>
+- name: <r_build_t_common> configure the build options
   shell:
   #become: yes
   #become_method: su
