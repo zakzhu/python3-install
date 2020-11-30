@@ -1,2 +1,18 @@
 ---
 # tasks file for build
+
+- import_tasks: common.yml
+  tags:
+    - r_build_t_common
+
+- import_tasks: exp_binary_file.yml
+  tags:
+    - r_build_t_exp_binary_file
+
+- import_tasks: exp_header_file.yml
+  tags:
+    - r_build_t_exp_header_file
+
+- import_tasks: exp_shared_libs.yml
+  tags:
+    - r_build_t_exp_shared_libs
