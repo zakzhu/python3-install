@@ -17,9 +17,9 @@
     #remove:
   register: checksum_result
 
-- name:
+- name: "<r_get_pkg_t_common> verify checksum of {{ package_tarball }}"
   fail:
-    msg: "Failed as requested from task" # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
+    msg: "The package is corrupted, please try again!" # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
   when: cheksum != package_checksum
   vars:
     checksum: "{{ checksum_result['stdout'].split('= ')[1] }}"
