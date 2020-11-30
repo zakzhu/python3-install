@@ -7,7 +7,8 @@ package:
   name: python
   version: 3.7.9
 
-package_tarball: "{{ package['name'].title() }}-{{ package['version'] }}.tar.xz"
+package_fullname: "{{ package['name'].title() }}-{{ package['version'] }}"
+package_tarball: "{{ package_fullname }}.tar.xz"
 
 package_url: "https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tar.xz"
 

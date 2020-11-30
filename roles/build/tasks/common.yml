@@ -1,4 +1,12 @@
 ---
+- name: "<r_build_t_common> create directory /usr/local/{{ package['name'] }}"
+  file:
+    path: "/usr/local/{{ package['name'] }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
 - name: <r_build_t_common>
   shell:
   #become: yes
@@ -6,8 +14,8 @@
   #become_user:
   #become_flags: "-s /bin/sh"
   args:
-    cmd: ./configure --prefix=   | tee
-    chdir:
+    cmd: "./configure --prefix=/usr/local/{{ package['name'] }} > /tmp/{{ package['name'] }}-configure.log"
+    chdir: "/usr/local/src/{{ package_fullname }}"
     # when filename already exists, this step *won't* be run.
     #creates:
 
@@ -37,7 +45,7 @@
   #become_user:
   #become_flags: "-s /bin/sh"
   args:
-    cmd: make | tee
+    cmd: "make > /tmp/{{ package['name'] }}-make.log"
     #chdir:
     # when filename already exists, this step *won't* be run.
     #creates:
@@ -52,7 +60,7 @@
   #become_user:
   #become_flags: "-s /bin/sh"
   args:
-    cmd: make install | tee
+    cmd: "make install > /tmp/{{ package['name'] }}-make_install.log"
     #chdir:
     # when filename already exists, this step *won't* be run.
     #creates:
