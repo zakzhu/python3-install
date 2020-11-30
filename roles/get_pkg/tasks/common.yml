@@ -1,0 +1,34 @@
+---
+- name: <r_get_pkg_t_common>
+  command:
+  #become: yes
+  #become_method: su
+  #become_user:
+  #become_flags: "-s /bin/sh"
+  args:
+    cmd: openssl dgst -{{ algo }} {{}}
+    #chdir:
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *won't* be run.
+    #creates:
+
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *will* be run.
+    #remove:
+  register: dgst_result
+
+- name:
+  fail:
+    msg: "Failed as requested from task" # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
+  when:
+
+- name: <r_get_pkg_t_common> extract SRC into /usr/local/src/
+  unarchive:
+    src:
+    dest: /usr/local/src/
+    #owner:
+    #group:
+    #mode:
+    # If the specified absolute path (file or directory) already
+    # exists, this step will *not* be run.
+    #creates:
