@@ -1,5 +1,5 @@
 ---
-- name: <> copy a file to /etc/ld.so.conf.d/
+- name: <r_build_t_exp_shared_libs> copy a file to /etc/ld.so.conf.d/
   copy:
     # if path ends with "/", only inside contents of that
     # directory are copied to destination.
@@ -14,3 +14,20 @@
     # The validation command to run before copying into place.
     # E.g. `validate: /usr/sbin/visudo -csf %s`
     #validate:
+
+- name: <r_build_t_exp_shared_libs> creates links and cache to the shared libraries
+  command:
+  #become: yes
+  #become_method: su
+  #become_user:
+  #become_flags: "-s /bin/sh"
+  args:
+    cmd: ldconfig
+    #chdir:
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *won't* be run.
+    #creates:
+
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *will* be run.
+    #remove:

@@ -1,5 +1,5 @@
 ---
-- name: <r_build_t_exp_binary_file> create a symbolic link to DEST
+- name: <r_build_t_exp_binary_file> create a symbolic link to /usr/local/[s]bin
   file:
     src: /file/to/link/to
     dest: /path/to/symlink

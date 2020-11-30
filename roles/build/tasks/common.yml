@@ -6,7 +6,7 @@
   #become_user:
   #become_flags: "-s /bin/sh"
   args:
-    cmd: ./configure --prefix=
+    cmd: ./configure --prefix=   | tee
     chdir:
     # when filename already exists, this step *won't* be run.
     #creates:
@@ -37,7 +37,7 @@
   #become_user:
   #become_flags: "-s /bin/sh"
   args:
-    cmd: make
+    cmd: make | tee
     #chdir:
     # when filename already exists, this step *won't* be run.
     #creates:
@@ -52,7 +52,7 @@
   #become_user:
   #become_flags: "-s /bin/sh"
   args:
-    cmd: make install
+    cmd: make install | tee
     #chdir:
     # when filename already exists, this step *won't* be run.
     #creates:
