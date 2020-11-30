@@ -24,9 +24,21 @@
     - when: status == '0'
       block:
         - import_role:
-            name: common
+            name: install_deps
           tags:
-            - r_common
+            - r_install_deps
+        - meta: flush_handlers
+
+        - import_role:
+            name: get_pkg
+          tags:
+            - r_get_pkg
+        - meta: flush_handlers
+
+        - import_role:
+            name: build
+          tags:
+            - r_build
         - meta: flush_handlers
 
   post_tasks:
@@ -36,4 +48,10 @@
             name: post_roles/common
           tags:
             - po_r_common
+        - meta: flush_handlers
+
+        - import_role:
+            name: post_roles/clean
+          tags:
+            - r_clean
         - meta: flush_handlers
