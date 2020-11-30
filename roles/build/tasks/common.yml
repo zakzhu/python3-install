@@ -7,7 +7,7 @@
     group: root
     mode: "0755"
 
-- name: <r_build_t_common> configure the build options
+- name: <r_build_t_common> configure build options
   shell:
   #become: yes
   #become_method: su
@@ -22,7 +22,7 @@
     # when filename already exists, this step *will* be run.
     #remove:
 
-- name: <r_build_t_common> clean the compilation environment
+- name: <r_build_t_common> clean compilation environment
   shell:
   #become: yes
   #become_method: su
@@ -38,7 +38,7 @@
     #remove:
   ignore_errors: yes
 
-- name: <r_build_t_common>
+- name: <r_build_t_common> compile source code
   shell:
   #become: yes
   #become_method: su
@@ -53,7 +53,7 @@
     # when filename already exists, this step *will* be run.
     #remove:
 
-- name: <r_build_t_common>
+- name: <r_build_t_common> install the build
   shell:
   #become: yes
   #become_method: su
