@@ -4,6 +4,6 @@
 # FROM TASK: <po_r_clean_t_common> remove temporary files
 tmp_files:
   - "{{ package_tarball }}"
-  - "{{ pacakge['name'] }}-configure.log"
+  - "{{ package['name'] }}-configure.log"
   - "{{ package['name'] }}-make.log"
   - "{{ package['name'] }}-make_install.log"
