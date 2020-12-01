@@ -30,7 +30,7 @@
   #become_flags: "-s /bin/sh"
   args:
     cmd: make clean
-    #chdir:
+    chdir: "/usr/local/src/{{ package_fullname }}"
     # when filename already exists, this step *won't* be run.
     #creates:
 
@@ -46,7 +46,7 @@
   #become_flags: "-s /bin/sh"
   args:
     cmd: "make > /tmp/{{ package['name'] }}-make.log"
-    #chdir:
+    chdir: "/usr/local/src/{{ package_fullname }}"
     # when filename already exists, this step *won't* be run.
     #creates:
 
@@ -61,7 +61,7 @@
   #become_flags: "-s /bin/sh"
   args:
     cmd: "make install > /tmp/{{ package['name'] }}-make_install.log"
-    #chdir:
+    chdir: "/usr/local/src/{{ package_fullname }}"
     # when filename already exists, this step *won't* be run.
     #creates:
 
