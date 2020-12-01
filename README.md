@@ -14,32 +14,24 @@
 
 - **Platforms:**
   - CentOS-7
-  - CentOS-8
-  - Fedora
-  - MacOS
-  - Ubuntu
 - **Dependencies:**
-  -
+  - ansible
 
 ## Installation
 
+
+
 ## Usage
+
+
 
 ## Examples
 
-## Why?
 
-> If your project does something already catered for by another project or is particularly complex, it’s useful to provide some justification.
 
 ## Contributing
 
 See the [contribution guide][info-contribute].
-
-## Support and Migration
-
-> A section on the support status of your project is very helpful, especially once you’ve released a few different major versions. This section is mostly useful to existing users who may need some hand-holding through a migration between major versions of your project.
->
-> A full migration guide might be a bit long to add to your README, I use a `MIGRATION` file in the root of my project repositories and link to it from this section ([see pa11y for an example](https://github.com/springernature/pa11y/blob/master/MIGRATION.md)).
 
 ## Frequently asked questions
 
