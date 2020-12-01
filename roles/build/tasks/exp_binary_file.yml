@@ -1,53 +1,53 @@
 ---
-- name: "<r_build_t_exp_binary_file> find binary path in /usr/local/{{ package['name'] }}"
-  find:
-    paths:
-      - /usr/local/{{ package['name'] }}
+# - name: "<r_build_t_exp_binary_file> find binary path in /usr/local/{{ package['name'] }}"
+#   find:
+#     paths:
+#       - /usr/local/{{ package['name'] }}
 
-    patterns:
-      - bin
-      - sbin
+#     patterns:
+#       - bin
+#       - sbin
 
-    # Select files whose age is equal to or greater than the
-    # specified time.
-    # Use a negative age to find files equal to or less than the
-    # specified time.
-    # You can choose seconds, minutes, hours, days, or weeks by
-    # specifying the first letter of any of those words
-    # (e.g.,"1w").
-    #age:
+#     # Select files whose age is equal to or greater than the
+#     # specified time.
+#     # Use a negative age to find files equal to or less than the
+#     # specified time.
+#     # You can choose seconds, minutes, hours, days, or weeks by
+#     # specifying the first letter of any of those words
+#     # (e.g.,"1w").
+#     #age:
 
-    # Choices: atime, ctime, mtime
-    #age_stamp: mtime
+#     # Choices: atime, ctime, mtime
+#     #age_stamp: mtime
 
-    # Select files whose size is equal to or greater than the
-    # specified size.
-    # Use a negative size to find files equal to or less than the
-    # specified size.
-    # Unqualified values are in bytes but b, k, m, g, and t can be
-    # appended to specify bytes, kilobytes, megabytes, gigabytes,
-    # and terabytes, respectively.
-    # Size is not evaluated for directories.
-    #size:
+#     # Select files whose size is equal to or greater than the
+#     # specified size.
+#     # Use a negative size to find files equal to or less than the
+#     # specified size.
+#     # Unqualified values are in bytes but b, k, m, g, and t can be
+#     # appended to specify bytes, kilobytes, megabytes, gigabytes,
+#     # and terabytes, respectively.
+#     # Size is not evaluated for directories.
+#     #size:
 
-    # Choices: any, directory, file, link
-    file_type: directory
-    recurse: yes
-    #excludes:
-    #  -
-    #use_regex: yes
-    #hidden: yes
-  register: find_bin_result
+#     # Choices: any, directory, file, link
+#     file_type: directory
+#     recurse: yes
+#     #excludes:
+#     #  -
+#     #use_regex: yes
+#     #hidden: yes
+#   register: find_bin_result
 
-- name: "<r_build_t_exp_binary_file> template a file to /etc/profile.d/{{ package['name'] }}.sh"
-  template:
-    src: "{{ package['name'] }}.sh.j2"
-    dest: "/etc/profile.d/{{ package['name'] }}.sh"
-    owner: root
-    group: root
-    mode: "0644"
-    #validate:
-    #backup: yes
+# - name: "<r_build_t_exp_binary_file> template a file to /etc/profile.d/{{ package['name'] }}.sh"
+#   template:
+#     src: "{{ package['name'] }}.sh.j2"
+#     dest: "/etc/profile.d/{{ package['name'] }}.sh"
+#     owner: root
+#     group: root
+#     mode: "0644"
+#     #validate:
+#     #backup: yes
 
 - name: <r_build_t_exp_binary_file> create a symbolic link to /usr/bin/python3
   file:
