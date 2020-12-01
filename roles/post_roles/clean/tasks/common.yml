@@ -4,3 +4,8 @@
     path: "/tmp/{{ item }}"
     state: absent
   loop: "{{ tmp_files }}"
+
+- name: <po_r_clean_t_common> remove source file
+  file:
+    path: "/usr/local/src/{{ package_fullname }}"
+    state: absent
