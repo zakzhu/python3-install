@@ -3,9 +3,11 @@
 
 # FROM TASK: "<r_get_pkg_t_copy_local> copy a {{ package_tarball }} to /tmp/"
 # FROM TASK: "<r_get_pkg_t_copy_remote> download file {{ package_tarball }}"
+# FROM TASK: "<r_get_pkg_t_common> verify checksum of {{ package_tarball }}"
 package:
   name: python
   version: 3.7.9
+  checksum: 389d3ed26b4d97c741d9e5423da1f43b
 
 package_fullname: "{{ package['name'].capitalize() }}-{{ package['version'] }}"
 package_tarball: "{{ package_fullname }}.tar.xz"
@@ -14,6 +16,3 @@ package_url: "https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tar.xz"
 
 # FROM TASK: "<r_get_pkg_t_common> calculate checksum of {{ package_tarball }}"
 dgst_algo: md5
-
-# FROM TASK: "<r_get_pkg_t_common> verify checksum of {{ package_tarball }}"
-package_checksum: 389d3ed26b4d97c741d9e5423da1f43b
