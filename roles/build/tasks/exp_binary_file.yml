@@ -5,7 +5,8 @@
       - /usr/local/{{ package['name'] }}
 
     patterns:
-      - bi
+      - bin
+      - sbin
 
     # Select files whose age is equal to or greater than the
     # specified time.
@@ -31,28 +32,26 @@
 
     # Choices: any, directory, file, link
     file_type: directory
-    recurse: no
+    recurse: yes
     #excludes:
     #  -
     #use_regex: yes
     #hidden: yes
   register: find_bin_result
 
-- name: <r_build_t_exp_binary_file>
-  copy:
-    content: |
-      export PATH= :$PATH
+- name: "<r_build_t_exp_binary_file> template a file to /etc/profile.d/{{ package['name'] }}.sh"
+  template:
+    src: "{{ package['name'] }}.sh.j2"
     dest: "/etc/profile.d/{{ package['name'] }}.sh"
     owner: root
     group: root
     mode: "0644"
-    # The validation command to run before copying into place.
-    # E.g. `validate: /usr/sbin/visudo -csf %s`
     #validate:
+    #backup: yes
 
 - name: <r_build_t_exp_binary_file> create a symbolic link to /usr/bin/python3
   file:
-    src: "/usr/local/{{ package['name'] }}/bin/python3"
+    src: "/usr/local/python/bin/python3"
     dest: /usr/bin/python3
     owner: root
     group: root
@@ -61,7 +60,7 @@
 
 - name: <r_build_t_exp_binary_file> create a symbolic link to /usr/bin/pip3
   file:
-    src: "/usr/local/{{ package['name'] }}/bin/pip3"
+    src: "/usr/local/python/bin/pip3"
     dest: /usr/bin/pip3
     owner: root
     group: root
