@@ -7,7 +7,7 @@
 [![release][shield-release]][info-release]
 [![prs welcome][shield-prs]][info-prs]
 
-> Project description
+Ansible playbook for python3 installation.
 
 [TOC]
 
@@ -34,6 +34,8 @@ git clone https://github.com/zakzhu/python3-install.git
 vim python3-install/inventories/production/host_vars/localhost.yml
 ```
 
+> EXAMPLE:
+>
 > ```yaml
 > package:
 >   name: python
