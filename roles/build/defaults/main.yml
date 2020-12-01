@@ -1,2 +1,6 @@
 ---
 # defaults file for build
+
+# FROM TASK: <r_build_t_common> configure build
+build_options:
+  - --prefix=/usr/local/install/{{ package_fullname.lower() }}
