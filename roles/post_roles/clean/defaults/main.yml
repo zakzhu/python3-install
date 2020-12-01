@@ -3,7 +3,7 @@
 
 # FROM TASK: <po_r_clean_t_common> remove temporary files
 tmp_files:
-  - Python-3.7.9.tar.xz
-  - python-configure.log
-  - python-make.log
-  - python-make_install.log
+  - "{{ package_tarball }}"
+  - "{{ pacakge['name'] }}-configure.log"
+  - "{{ package['name'] }}-make.log"
+  - "{{ package['name'] }}-make_install.log"
