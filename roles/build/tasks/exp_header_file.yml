@@ -1,9 +1,13 @@
 ---
-- name: <r_build_t_exp_header_file> create a symbolic link to DEST
+- name: <r_build_t_exp_header_file> export header files to /usr/local/include/
   file:
-    src: /file/to/link/to
-    dest: /path/to/symlink
+    src: "{{ item }}"
+    dest: "/usr/local/include/{{ item }}"
     owner: root
     group: root
     #mode:
     state: link
+  loop: header_file_paths
+  vars:
+    header_file_paths:
+      -
