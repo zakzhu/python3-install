@@ -1,7 +1,8 @@
 # Python3-Install
 
-[![build status][shield-build]][info-build]
-[![gitter room][shield-gitter]][info-gitter]
+<!-- [![build status][shield-build]][info-build] -->
+<!-- [![gitter room][shield-gitter]][info-gitter] -->
+
 [![license][shield-license]][info-license]
 [![release][shield-release]][info-release]
 [![prs welcome][shield-prs]][info-prs]
@@ -19,15 +20,34 @@
 
 ## Installation
 
+```bash
+yum -y install ansible 
+```
 
+```bash
+git clone https://github.com/zakzhu/python3-install.git
+```
 
 ## Usage
 
+```bash
+vim python3-install/inventories/production/host_vars/localhost.yml
+```
 
+> ```yaml
+> package:
+>   name: python
+>   version: "3.7.9"
+>   checksum: 389d3ed26b4d97c741d9e5423da1f43b
+> 
+> package_url: "https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tar.xz"
+> 
+> dgst_algo: md5
+> ```
 
-## Examples
-
-
+```bash
+ansible-playbook -i inventories/production/inventory site.yml
+```
 
 ## Contributing
 
@@ -42,7 +62,6 @@ Please see [FAQ.md][info-faq] for frequently asked questions.
 The following excellent people helped massively:
 
 - [Rowan Manning](https://rowanmanning.com)
--
 
 ## License
 
@@ -56,7 +75,6 @@ Copyright &copy; 2020, Zak Zhu
 [info-license]: LICENSE
 [info-release]: https://github.com/zakzhu/python3-install/releases
 [info-prs]: https://github.com/zakzhu/python3-install/pulls
-
 [shield-build]: https://img.shields.io/travis/zakzhu/python3-install
 [shield-gitter]: https://img.shields.io/gitter/room/zakzhu/python3-install
 [shield-license]: https://img.shields.io/github/license/zakzhu/python3-install
