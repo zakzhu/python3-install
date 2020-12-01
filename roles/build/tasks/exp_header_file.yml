@@ -1,13 +1,13 @@
 ---
 - name: <r_build_t_exp_header_file> export header files to /usr/local/include/
   file:
-    src: "{{ item }}"
+    src: "/usr/local/{{ package['name'] }}/include/{{ item }}"
     dest: "/usr/local/include/{{ item }}"
     owner: root
     group: root
     #mode:
     state: link
-  loop: header_file_paths
+  loop: header_files
   vars:
-    header_file_paths:
+    header_files:
       -
