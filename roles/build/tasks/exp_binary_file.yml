@@ -1,5 +1,5 @@
 ---
-- name: <r_build_t_exp_binary_file>
+- name: "<r_build_t_exp_binary_file> find binary path in /usr/local/{{ package['name'] }}"
   find:
     paths:
       - /usr/local/{{ package['name'] }}
