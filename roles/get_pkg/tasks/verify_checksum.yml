@@ -1,5 +1,5 @@
 ---
-- name: "<r_get_pkg_t_verfify_checksum> calculate checksum of {{ package_tarball }}"
+- name: "<r_get_pkg_t_verify_checksum> calculate checksum of {{ package_tarball }}"
   command:
   #become: yes
   #become_method: su
@@ -17,7 +17,7 @@
     #remove:
   register: checksum_result
 
-- name: "<r_get_pkg_t_verfify_checksum> verify checksum of {{ package_tarball }}"
+- name: "<r_get_pkg_t_verify_checksum> verify checksum of {{ package_tarball }}"
   fail:
     msg: "The package is corrupted, please try again!" # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
   when: checksum != package['checksum']

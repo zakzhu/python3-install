@@ -11,11 +11,12 @@
 #
 - import_tasks: verify_checksum.yml
   tags:
-    - r_get_pkg_t_verfify_checksum
+    - r_get_pkg_t_verify_checksum
 
 - include_tasks:
     file: "extract_{{ package['type'] }}.yml"
     apply:
       tags:
-        - "r_get_pkg_t_extract_{{ package['type'] }}.yml"
-  tags: always
+        - r_get_pkg_t_extract
+  tags:
+    - r_get_pkg_t_extract

@@ -1,5 +1,5 @@
 ---
-- name: "<r_get_pkg_t_common> create directory {{ deploy_root }}/install/{{ package_fullname }}"
+- name: "<r_get_pkg_t_extract> create directory {{ deploy_root }}/install/{{ package_fullname }}"
   file:
     path: "{{ deploy_root }}/install/{{ package_fullname }}"
     state: directory
@@ -7,7 +7,7 @@
     group: root
     mode: "0755"
 
-- name: "<r_get_pkg_t_common> extract /tmp/{{ package_tarball }} into {{ deploy_root }}/install/{{ package_fullname }}"
+- name: "<r_get_pkg_t_extract> extract /tmp/{{ package_tarball }} into {{ deploy_root }}/install/{{ package_fullname }}"
   unarchive:
     src: "/tmp/{{ package_tarball }}"
     dest: "{{ deploy_root }}/install/{{ package_fullname }}"
