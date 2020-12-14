@@ -8,6 +8,7 @@ deploy_root:
 # FROM TASK: "<r_get_pkg_t_common> verify checksum of {{ package_tarball }}"
 package:
   name:
+  alias:
   version:
   checksum:
   # Choices: source, binary
