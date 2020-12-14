@@ -1,8 +1,8 @@
 ---
-- name: <r_build_t_exp_header_file> export header files to /usr/local/include/
+- name: <r_build_t_exp_header_file> export header files to {{ deploy_root }}/include/
   file:
-    src: "/usr/local/{{ package['name'] }}/include/{{ item }}"
-    dest: "/usr/local/include/{{ item }}"
+    src: "{{ deploy_root }}/{{ package['name'] }}/include/{{ item }}"
+    dest: "/usr/include/{{ item }}"
     owner: root
     group: root
     #mode:

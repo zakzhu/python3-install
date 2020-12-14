@@ -1,8 +1,8 @@
 ---
-# - name: "<r_build_t_exp_binary_file> find binary path in /usr/local/{{ package['name'] }}"
+# - name: "<r_build_t_exp_binary_file> find binary path in {{ deploy_root }}/{{ package['name'] }}"
 #   find:
 #     paths:
-#       - /usr/local/{{ package['name'] }}
+#       - {{ deploy_root }}/{{ package['name'] }}
 
 #     patterns:
 #       - bin
@@ -52,7 +52,7 @@
 
 - name: <r_build_t_exp_binary_file> create a symbolic link to /usr/bin/python3
   file:
-    src: /usr/local/python/bin/python3
+    src: "{{ deploy_root }}/python/bin/python3"
     dest: /usr/bin/python3
     owner: root
     group: root
@@ -61,7 +61,7 @@
 
 - name: <r_build_t_exp_binary_file> create a symbolic link to /usr/bin/pip3
   file:
-    src: /usr/local/python/bin/pip3
+    src: "{{ deploy_root }}/python/bin/pip3"
     dest: /usr/bin/pip3
     owner: root
     group: root

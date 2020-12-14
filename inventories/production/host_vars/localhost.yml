@@ -1,7 +1,11 @@
+deploy_root: /usr/local
+
 package:
   name: python
   version: "3.7.9"
   checksum: 389d3ed26b4d97c741d9e5423da1f43b
+  # Choices: source, binary
+  type: source
 
 package_url: "https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tar.xz"
 

@@ -1,7 +1,7 @@
 ---
-- name: "<r_build_t_common> create directory /usr/local/install/{{ package_fullname.lower() }}"
+- name: "<r_build_t_common> create directory {{ deploy_root }}/install/{{ package_fullname.lower() }}"
   file:
-    path: "/usr/local/install/{{ package_fullname.lower() }}"
+    path: "{{ deploy_root }}/install/{{ package_fullname.lower() }}"
     state: directory
     owner: root
     group: root
@@ -15,7 +15,7 @@
   #become_flags: "-s /bin/sh"
   args:
     cmd: "./configure {{ build_options | join(' ') }} > /tmp/{{ package['name'] }}-configure.log"
-    chdir: "/usr/local/src/{{ package_fullname }}"
+    chdir: "{{ deploy_root }}/src/{{ package_fullname }}"
     # when filename already exists, this step *won't* be run.
     #creates:
 
@@ -30,7 +30,7 @@
   #become_flags: "-s /bin/sh"
   args:
     cmd: make clean
-    chdir: "/usr/local/src/{{ package_fullname }}"
+    chdir: "{{ deploy_root }}/src/{{ package_fullname }}"
     # when filename already exists, this step *won't* be run.
     #creates:
 
@@ -46,7 +46,7 @@
   #become_flags: "-s /bin/sh"
   args:
     cmd: "make > /tmp/{{ package['name'] }}-make.log"
-    chdir: "/usr/local/src/{{ package_fullname }}"
+    chdir: "{{ deploy_root }}/src/{{ package_fullname }}"
     # when filename already exists, this step *won't* be run.
     #creates:
 
@@ -61,17 +61,17 @@
   #become_flags: "-s /bin/sh"
   args:
     cmd: "make install > /tmp/{{ package['name'] }}-make_install.log"
-    chdir: "/usr/local/src/{{ package_fullname }}"
+    chdir: "{{ deploy_root }}/src/{{ package_fullname }}"
     # when filename already exists, this step *won't* be run.
     #creates:
 
     # when filename already exists, this step *will* be run.
     #remove:
 
-- name: "<r_build_t_common> create a symbolic link to /usr/local/{{ package['name'] }}"
+- name: "<r_build_t_common> create a symbolic link to {{ deploy_root }}/{{ package['name'] }}"
   file:
-    src: "/usr/local/install/{{ package_fullname.lower() }}"
-    dest: "/usr/local/{{ package['name'] }}"
+    src: "{{ deploy_root }}/install/{{ package_fullname.lower() }}"
+    dest: "{{ deploy_root }}/{{ package['name'] }}"
     owner: root
     group: root
     #mode:
