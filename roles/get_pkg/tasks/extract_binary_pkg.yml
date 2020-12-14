@@ -1,0 +1,21 @@
+---
+- when: package['type'] == 'binary'
+  block:
+    - name: "<r_get_pkg_t_common> create directory {{ deploy_root }}/install/{{ package_fullname }}"
+      file:
+        path: "{{ deploy_root }}/install/{{ package_fullname }}"
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
+    - name: "<r_get_pkg_t_common> extract /tmp/{{ package_tarball }} into {{ deploy_root }}/install/{{ package_fullname }}"
+      unarchive:
+        src: "/tmp/{{ package_tarball }}"
+        dest: "{{ deploy_root }}/install/{{ package_fullname }}"
+        #owner:
+        #group:
+        #mode:
+        # If the specified absolute path (file or directory) already
+        # exists, this step will *not* be run.
+        #creates:

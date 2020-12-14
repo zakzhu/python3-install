@@ -9,6 +9,10 @@
 #   tags:
 #     - r_get_pkg_t_copy_local
 #
-- import_tasks: common.yml
+- import_tasks: verify_checksum.yml
   tags:
-    - r_get_pkg_t_common
+    - r_get_pkg_t_verfify_checksum
+
+- include_tasks:
+    apply: undefined # not required. Accepts a hash of task keywords (e.g. C(tags), C(become)) that will be applied to the tasks within the include.
+    file: undefined # not required. The name of the imported file is specified directly without any other option.,Unlike M(import_tasks), most keywords, including loops and conditionals, apply to this statement.
