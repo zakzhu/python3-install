@@ -68,10 +68,10 @@
     # when filename already exists, this step *will* be run.
     #remove:
 
-- name: "<r_build_t_common> create a symbolic link to {{ deploy_root }}/{{ package['name'] }}"
+- name: "<r_build_t_common> create a symbolic link to {{ deploy_root }}/{{ package['alias'] }}"
   file:
     src: "{{ deploy_root }}/install/{{ package_fullname }}"
-    dest: "{{ deploy_root }}/{{ package['name'] }}"
+    dest: "{{ deploy_root }}/{{ package['alias'] }}"
     #owner:
     #group:
     #mode:
