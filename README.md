@@ -41,12 +41,13 @@ vim python3-install/inventories/production/host_vars/localhost.yml
 >
 > package:
 >   name: python
+>   alias: python
 >   version: "3.7.9"
+>   dgst_algo: md5
 >   checksum: 389d3ed26b4d97c741d9e5423da1f43b
+>   type: source
 >
 > package_url: "https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tar.xz"
->
-> dgst_algo: md5
 > ```
 
 ```bash
