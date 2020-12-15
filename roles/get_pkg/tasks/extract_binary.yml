@@ -20,19 +20,23 @@
     list_files: yes
   register: unpack_result
 
-- set_fact:
+- name: set variable archive_root
+  set_fact:
     archive_root: "{{ unpack_result['files'][0] }}"
 
-- name: "<r_get_pkg_t_extract> create a hard link to {{ deploy_root }}/install/{{ package_fullname }}"
-  file:
-    src: "{{ deploy_root }}/install/{{ archive_root }}"
-    dest: "{{ deploy_root }}/install/{{ package_fullname }}"
-    #owner:
-    #group:
-    #mode:
-    state: hard
+- name: "<r_get_pkg_t_extract> rename the file to {{ deploy_root }}/install/{{ package_fullname }}"
+  command:
+  #become: yes
+  #become_method: su
+  #become_user:
+  #become_flags: "-s /bin/sh"
+  args:
+    cmd: "mv {{ archive_root }} {{ package_fullname }}"
+    chdir: "{{ deploy_root }}/install"
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *won't* be run.
+    creates: "{{ package_fullname }}"
 
-- name: "<r_get_pkg_t_extract> remove {{ deploy_root }}/install/{{ archive_root }}"
-  file:
-    path: "{{ deploy_root }}/install/{{ archive_root }}"
-    state: absent
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *will* be run.
+    #remove:
