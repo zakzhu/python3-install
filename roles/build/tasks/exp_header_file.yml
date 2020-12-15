@@ -1,10 +1,10 @@
 ---
 - name: <r_build_t_exp_header_file> export header files to {{ deploy_root }}/include/
   file:
-    src: "{{ deploy_root }}/{{ package['name'] }}/include/{{ item }}"
+    src: "{{ deploy_root }}/{{ package['alias'] }}/include/{{ item }}"
     dest: "/usr/include/{{ item }}"
-    owner: root
-    group: root
+    #owner:
+    #group:
     #mode:
     state: link
   loop: header_files
