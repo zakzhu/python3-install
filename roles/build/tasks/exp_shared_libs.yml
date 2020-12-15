@@ -5,7 +5,7 @@
     # directory are copied to destination.
     # if it does not end with "/", the directory itself
     # with all contents is copied.
-    src: "{{ package['name'] }}.conf"
+    src: "{{ package['alias'] }}.conf"
     dest: /etc/ld.so.conf.d/
     #owner:
     #group:
