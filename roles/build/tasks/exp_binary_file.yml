@@ -11,7 +11,7 @@
 
 - name: <r_build_t_exp_binary_file> create a symbolic link to /usr/bin/python3
   file:
-    src: "{{ deploy_root }}/python/bin/python3"
+    src: "{{ deploy_root }}/{{ package['alias'] }}/bin/python3"
     dest: /usr/bin/python3
     #owner:
     #group:
@@ -20,7 +20,7 @@
 
 - name: <r_build_t_exp_binary_file> create a symbolic link to /usr/bin/pip3
   file:
-    src: "{{ deploy_root }}/python/bin/pip3"
+    src: "{{ deploy_root }}/{{ package['alias'] }}/bin/pip3"
     dest: /usr/bin/pip3
     #owner:
     #group:
